@@ -48,7 +48,7 @@ func checkThread(srcThread string, pic string) bool {
 
 func main() {
 	var iStart int = 0
-	var iEnd int = 1
+	var iEnd int = 11
 	var sPicture = "1384107007405.jpg"
 	var sBaseURL = "http://boards.4chan.org"
 	var sBoard = "s"

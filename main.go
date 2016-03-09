@@ -45,7 +45,6 @@ func checkThread(srcThread string, pic string) bool {
 	return false
 }
 
-
 func main() {
 	var iStart int = 0
 	var iEnd int = 11
@@ -96,7 +95,7 @@ func main() {
 				fmt.Println(err.Error())
 				continue
 			}
-			fmt.Println("Check Thread: " + thread)			
+			fmt.Println("Check Thread: " + thread)
 			result := checkThread(srcThread, sPicture)
 			if result {
 				fmt.Println("Pic found in Thread: " + sURL + thread)
@@ -104,9 +103,5 @@ func main() {
 			}
 		}
 	}
-
-
-
-
 
 }

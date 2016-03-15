@@ -14,7 +14,7 @@ type Chan interface {
 	getMaxPage() int
 	getUrl(string, int) string
 	getCatalogUrl(string) string
-	getThreads(string) []string
+	getThreads(string, string) []string
 	hasCatalog() bool
 }
 
@@ -60,7 +60,7 @@ func main() {
 				continue
 			}
 
-			threads = obj.getThreads(srcPage)
+			threads = obj.getThreads(*flagBoard, srcPage)
 
 			// make
 			go dlThreads(obj, threads)
@@ -72,7 +72,8 @@ func main() {
 			fmt.Println("Error while downloading catalog.")
 			return
 		}
-		threads = obj.getThreads(src)
+		threads = obj.getThreads(*flagBoard, src)
+		fmt.Printf("got %d threads\n", len(threads))
 		dlThreads(obj, threads)
 	}
 }

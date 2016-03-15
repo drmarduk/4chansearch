@@ -14,7 +14,8 @@ func New4Chan() FourChan {
 }
 
 func (c FourChan) hasCatalog() bool {
-	return true
+	//return true
+	return false
 }
 
 func (c FourChan) getCatalogUrl(b string) string {
@@ -29,14 +30,14 @@ func (c FourChan) getUrl(b string, i int) string {
 	return "https://boards.4chan.org/" + b + "/" + strconv.Itoa(i)
 }
 
-func (c FourChan) getThreads(src string) []string {
+func (c FourChan) getThreads(b, src string) []string {
 	var result []string
 	reg := regexp.MustCompile(`[<a href="res/[0-9]{8,12}" class="replylink">`)
 	matches := reg.FindAllStringSubmatch(src, -1)
 
 	for _, s := range matches {
 		tmp := s[0]
-		tmp = tmp[:strings.Index(tmp, "\"")]
+		tmp = "https://boards.4chan.org/" + b + tmp[:strings.Index(tmp, "\"")]
 		result = append(result, tmp)
 	}
 
